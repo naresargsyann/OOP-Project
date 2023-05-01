@@ -43,7 +43,7 @@ public class Cell {
     }
 
     public boolean equals(int x, int y){
-       if(this.row == x && this.col = y){
+       if(this.row == x && this.col == y){
         return true;
        }
        return false;

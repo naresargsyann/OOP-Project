@@ -40,7 +40,7 @@ public abstract class Pieces {
         this.color = color;
     }
 
-    protected abstract void move();
+    protected abstract void move(int x, int y);
 
     // public boolean isCaptureAvailable(){
     //     if(this.color == 'W'){
