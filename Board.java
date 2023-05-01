@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Board {
-
     private Cell[][] board = new Cell[8][8];
     private ArrayList<Pieces> white;
     private ArrayList<Pieces> black;
