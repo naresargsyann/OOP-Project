@@ -150,7 +150,6 @@ public class Board {
                 }
             }
         }
-        System.out.println(moves.toString());
         return ToReturn;
     }
 
@@ -175,7 +174,7 @@ public class Board {
             if(destinationX != startX - 1){
                 return false;
             }
-            if(destinationY != startY + 1 || destinationY != startY - 1){
+            if(destinationY != startY + 1 && destinationY != startY - 1){ // || replaced with &&
                 return false;
             }
 
@@ -191,7 +190,7 @@ public class Board {
             if(destinationX != startX + 1){
                 return false;
             }
-            if(destinationY != startY + 1 || destinationY != startY - 1){
+            if(destinationY != startY + 1 && destinationY != startY - 1){// || replaced with &&
                 return false;
             }
         }
@@ -210,21 +209,25 @@ public class Board {
     public void play(boolean player){
         String destination;
         while(!isGameOver(player)){
+            printBoard();
             if(isCaptureAvailable(player)){
+                System.out.println(moves.toString());
                 destination = getInput();
                 for(int i = 0; i < moves.size(); i++){
                     if(moves.get(i).equals(destination)){
-                        isEmpty(Integer.valueOf(destination.charAt(0)), Integer.valueOf(destination.charAt(1))).move(Integer.valueOf(destination.charAt(2)), Integer.valueOf(destination.charAt(3)));
+                        isEmpty((destination.charAt(0)-'0'), (destination.charAt(1))-'0').move((destination.charAt(2)-'0'), (destination.charAt(3)-'0'));
+                        capture(((destination.charAt(0)-'0')+(destination.charAt(2)-'0'))/2, (((destination.charAt(1))-'0')+(destination.charAt(3)-'0'))/2, !player);
+                        player = !player;
                     }
                 }
             }
             else{
                 destination = getInput();
-                if(isMoveValid(Integer.valueOf(destination.charAt(0)), Integer.valueOf(destination.charAt(1)), Integer.valueOf(destination.charAt(2)), Integer.valueOf(destination.charAt(3)), player)){
-                    isEmpty(Integer.valueOf(destination.charAt(0)), Integer.valueOf(destination.charAt(1))).move(Integer.valueOf(destination.charAt(2)), Integer.valueOf(destination.charAt(3)));
+                if(isMoveValid((destination.charAt(0)-'0'), (destination.charAt(1)-'0'), (destination.charAt(2)-'0'), (destination.charAt(3)-'0'), player)){
+                    isEmpty((destination.charAt(0)-'0'), (destination.charAt(1)-'0')).move((destination.charAt(2)-'0'), (destination.charAt(3)-'0'));
+                    player = !player;
                 }
             }
-            player = !player;
             moves.clear();
         }
         if(player){
@@ -248,9 +251,13 @@ public class Board {
         return null;
     }
 
-    // private void capture(int destinationX, int destinationY){
-
-    // }
+    private void capture(int captureCoordinateX, int captureCoordinateY, boolean player){
+        if(player){
+            white.remove(isEmpty(captureCoordinateX, captureCoordinateY));
+        } else{
+            black.remove(isEmpty(captureCoordinateX, captureCoordinateY));
+        }
+    }
 
     private boolean isGameOver(boolean player){
         if(!isCaptureAvailable(player)){
@@ -271,12 +278,14 @@ public class Board {
                 }
             }
         }
-        return true;
+        moves.clear(); // added this line as isCaptureAvailable is being called twice (from isGameOver and from the play)
+        return false;// when capture is available, the game is not over for sure
     }
 
     public static void main(String[] args) {
         Board newBoard = new Board();
-        newBoard.printBoard();
+        newBoard.initialise();
+        //newBoard.printBoard();
         newBoard.play(true);
     }
 }

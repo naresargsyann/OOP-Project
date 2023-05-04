@@ -41,7 +41,6 @@ public abstract class Pieces {
     }
 
     protected abstract void move(int x, int y);
-
     // public boolean isCaptureAvailable(){
     //     if(this.color == 'W'){
     //         if(currentCell.getCol() - 1 >= 0 && currentCell.getRow() - 1 >= 0){
