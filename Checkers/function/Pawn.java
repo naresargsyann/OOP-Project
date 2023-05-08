@@ -1,6 +1,6 @@
-public class Pawn extends Pieces {
+public class Pawn extends Piece {
     // move;
-    public Pawn(Cell cell, char name, char color) {
+    protected Pawn(Cell cell, char name, char color) {
         super(cell, name, color);
     }
 
