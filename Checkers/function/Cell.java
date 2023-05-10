@@ -1,5 +1,5 @@
 
-class Cell {
+public class Cell {
     private int row;
     private int col;
     private char color;
@@ -42,8 +42,8 @@ class Cell {
         this.color = color;
     }
 
-    public boolean equals(int x, int y) {
-        if (this.row == x && this.col == y) {
+    public boolean equals(int cordX, int cordY) {
+        if (this.row == cordX && this.col == cordY) {
             return true;
         }
         return false;
