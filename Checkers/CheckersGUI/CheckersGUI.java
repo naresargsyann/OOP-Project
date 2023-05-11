@@ -156,7 +156,7 @@ public class CheckersGUI extends JFrame implements ActionListener {
                     "WARNING: LIFE or DEATH",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.INFORMATION_MESSAGE,
-                    createImageIcon("C:/Users/Anna/Desktop/OOPProject/Checkers/CheckersGUI/new.png"),
+                    createImageIcon("C:/Users/Anna/Desktop/OOPProject/Checkers/CheckersGUI/niceskull2.png"),
                     options,
                     options[0]);
             if (choice == 0) {
@@ -172,7 +172,7 @@ public class CheckersGUI extends JFrame implements ActionListener {
                     "Restarting the game",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.INFORMATION_MESSAGE,
-                    createImageIcon("C:/Users/Anna/Desktop/OOPProject/Checkers/CheckersGUI/meditation.png"),
+                    createImageIcon("C:/Users/Anna/Desktop/OOPProject/Checkers/CheckersGUI/noone.png"),
                     options,
                     options[0]);
             if (choice == 0) {
